@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
             cursor.moveToFirst();
 
-
+            //Accessing through the cursor
             while (cursor != null) {
                 String s = cursor.getString(sfname) + " " + " "
                         + cursor.getString(rollno) + " " + cursor.getString(cid);
