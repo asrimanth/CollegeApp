@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView = findViewById(R.id.text);
 
         try
         {
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 //            mDb.execSQL("INSERT INTO students VALUES ('Srimanth','Agastyaraju','16311A05W4',9502746580,101)");
             mDb.execSQL("DELETE FROM enrolled");
             mDb.execSQL("INSERT INTO enrolled VALUES ('16311A05W4',101,'Srimanth')");
+            mDb.execSQL("INSERT INTO enrolled VALUES ('12211A0587',101,'Shanmukha')");
             Cursor cursor = mDb.rawQuery("SELECT * FROM enrolled", null);
 
             int sfname = cursor.getColumnIndex(CollegeDbMetadata.Enrolled.COLUMN_STUDENT_FIRST_NAME);
@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
             cursor.moveToFirst();
 
+
             while (cursor != null) {
                 String s = cursor.getString(sfname) + " " + " "
                         + cursor.getString(rollno) + " " + cursor.getString(cid);
-                textView.setText(s);
+                Log.i("data",s);
                 cursor.moveToNext();
             }
         }
